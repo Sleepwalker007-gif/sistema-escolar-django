@@ -1,0 +1,11 @@
+{% extends "escola/base.html" %}
+{% block title %}Cursos | Sistema Escolar{% endblock %}
+{% block content %}
+<h1>Cursos</h1>
+{% for curso in cursos %}
+<div class="card"><h2>{{ curso.titulo }}</h2><p>{{ curso.descricao|default:"Sem descrição." }}</p>
+<p><strong>Alunos matriculados:</strong>
+{% for aluno in curso.alunos.all %}{{ aluno.nome }} {{ aluno.sobrenome }}{% if not forloop.last %}, {% endif %}{% empty %}<span class="muted">Nenhum aluno matriculado.</span>{% endfor %}
+</p></div>
+{% empty %}<div class="card">Ainda não há cursos cadastrados. Cadastre pelo <a href="/admin/">painel administrativo</a>.</div>{% endfor %}
+{% endblock %}
