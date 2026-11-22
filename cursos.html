@@ -1,0 +1,16 @@
+{% extends "escola/base.html" %}
+{% block title %}Cursos | Gestão Escolar{% endblock %}
+{% block content %}
+<h1>Cursos disponíveis</h1>
+<p class="muted">Cursos cadastrados e respectivos alunos matriculados.</p>
+{% for curso in cursos %}
+<article class="card">
+  <h2>{{ curso.titulo }}</h2>
+  <p>{{ curso.descricao|default:"Descrição não informada."|linebreaksbr }}</p>
+  <strong>Alunos matriculados:</strong>
+  {% for aluno in curso.alunos.all %}<span class="tag">{{ aluno.nome }} {{ aluno.sobrenome }}</span>{% empty %}<p class="muted">Nenhum aluno matriculado.</p>{% endfor %}
+</article>
+{% empty %}
+<div class="card">Nenhum curso cadastrado. Utilize o <a href="/admin/">Django Admin</a> para adicionar o primeiro curso.</div>
+{% endfor %}
+{% endblock %}

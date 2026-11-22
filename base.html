@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Sistema de Gestão Escolar{% endblock %}</title>
+  <style>
+    :root{font-family:Arial,sans-serif;color:#202b43;background:#f3f5fa}
+    *{box-sizing:border-box}body{margin:0}
+    header{background:#20345f;color:#fff;padding:22px max(5%,calc((100% - 1050px)/2))}
+    header strong{font-size:21px}nav{display:flex;gap:20px;flex-wrap:wrap;margin-top:15px}
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    main{max-width:1050px;margin:34px auto;padding:0 20px}
+    .card{background:#fff;border:1px solid #e6eaf2;border-radius:14px;padding:24px;margin:16px 0;box-shadow:0 5px 18px #1b2c5010}
+    h1{margin-top:0;color:#20345f}.muted{color:#69758b}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px}
+    .stat strong{font-size:30px;color:#3159a5;display:block;margin-top:8px}
+    .tag{display:inline-block;background:#edf2ff;color:#294d91;padding:5px 10px;border-radius:20px;margin:4px 4px 0 0;font-size:13px}
+    footer{text-align:center;color:#778197;padding:30px}
+  </style>
+</head>
+<body>
+<header>
+  <strong>Sistema de Gestão Escolar</strong>
+  <nav>
+    <a href="{% url 'inicio' %}">Início</a>
+    <a href="{% url 'alunos' %}">Alunos</a>
+    <a href="{% url 'cursos' %}">Cursos</a>
+    <a href="/admin/">Django Admin</a>
+  </nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer>Projeto acadêmico — Desenvolvimento de aplicações web com Django</footer>
+</body>
+</html>

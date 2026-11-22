@@ -1,0 +1,13 @@
+{% extends "escola/base.html" %}
+{% block title %}Início | Gestão Escolar{% endblock %}
+{% block content %}
+<section class="card">
+  <h1>Bem-vindo ao Sistema de Gestão Escolar</h1>
+  <p class="muted">Gerencie os cadastros de alunos, cursos e matrículas em um só lugar.</p>
+  <p>Utilize o menu para consultar as listagens ou acesse o Django Admin para cadastrar e editar informações.</p>
+</section>
+<section class="stats">
+  <div class="card stat"><span class="muted">Alunos cadastrados</span><strong>{{ total_alunos }}</strong></div>
+  <div class="card stat"><span class="muted">Cursos cadastrados</span><strong>{{ total_cursos }}</strong></div>
+</section>
+{% endblock %}

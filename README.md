@@ -1,29 +1,68 @@
-# Sistema Escolar Django
+# Sistema de Gestão Escolar
 
-Projeto acadêmico desenvolvido com Django para cadastro e consulta de alunos e cursos.
+Projeto acadêmico desenvolvido com Django para gerenciar alunos e cursos.
+
+## Requisitos
+- Python 3.10 ou superior
+- pip
 
 ## Funcionalidades
-- Cadastro de alunos (nome, sobrenome e e-mail).
-- Cadastro de cursos (título e descrição).
-- Relacionamento muitos-para-muitos: um aluno pode estar matriculado em vários cursos.
-- Gerenciamento pelo Django Admin.
-- Páginas públicas para visualizar alunos e cursos.
+- Cadastro de alunos: nome, sobrenome e e-mail.
+- Cadastro de cursos: título e descrição.
+- Relacionamento muitos-para-muitos: cada aluno pode estar matriculado em vários cursos e cada curso pode ter vários alunos.
+- Administração dos registros pelo Django Admin.
+- Páginas públicas para listar alunos e cursos.
 
-## Como executar
-1. Crie e ative um ambiente virtual:
-   ```bash
-   python -m venv venv
-   # Windows
-   venv\\Scripts\\activate
-   # Linux/macOS
-   source venv/bin/activate
-   ```
-2. Instale as dependências: `pip install -r requirements.txt`
-3. Crie as tabelas: `python manage.py makemigrations` e `python manage.py migrate`
-4. Crie um usuário administrador: `python manage.py createsuperuser`
-5. Inicie: `python manage.py runserver`
+## Instalação no Windows (VS Code)
+Abra a pasta do projeto no VS Code e, no terminal, execute:
 
-Acesse http://127.0.0.1:8000/ e o painel em http://127.0.0.1:8000/admin/.
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python manage.py makemigrations escola
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
 
-## Tecnologias
-Python, Django e SQLite.
+Se o PowerShell bloquear a ativação do ambiente, execute temporariamente:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\venv\Scripts\Activate.ps1
+```
+
+No navegador:
+- Página inicial: http://127.0.0.1:8000/
+- Alunos: http://127.0.0.1:8000/alunos/
+- Cursos: http://127.0.0.1:8000/cursos/
+- Administração: http://127.0.0.1:8000/admin/
+
+## Como testar
+1. Entre em `/admin/` com o usuário criado.
+2. Cadastre pelo menos dois cursos.
+3. Cadastre um aluno e selecione um ou mais cursos no campo de matrícula.
+4. Abra `/alunos/` e `/cursos/` para conferir as listagens e os relacionamentos.
+
+## Estrutura
+```text
+sistema_escolar_django/
+├── manage.py
+├── requirements.txt
+├── README.md
+├── sistema_escolar/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+└── escola/
+    ├── models.py
+    ├── admin.py
+    ├── views.py
+    ├── urls.py
+    ├── migrations/
+    └── templates/escola/
+```
+
+## Observação acadêmica
+Antes da entrega, execute os comandos de instalação e teste as páginas no seu computador. O banco SQLite local não é enviado, pois será criado automaticamente com `migrate`.
